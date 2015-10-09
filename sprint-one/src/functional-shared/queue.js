@@ -11,15 +11,14 @@ var Queue = function(){
 };
 
 var queueMethods = {
-   enqueue: function (value){
-var firstInLine = Object.keys(this.storage)[0];
+
+  enqueue: function (value){
+    var firstInLine = Object.keys(this.storage)[0];
     this.storage[this.index] = value;
     this.index++;
   },
-
-
    
-   dequeue: function (){
+  dequeue: function (){
     if (this.index > 0){
       console.log('firstinline',Object.keys(this.storage)[0]);
       var firstInLine = Object.keys(this.storage)[0];
@@ -31,28 +30,7 @@ var firstInLine = Object.keys(this.storage)[0];
     return firstVal;
   },
   
-   size: function (){
-    return this.index;
-  }
-};
-
-
-
-   
-   dequeue: function (){
-    if (this.index > 0){
-      console.log('firstinline',Object.keys(this.storage)[0]);
-      var firstInLine = Object.keys(this.storage)[0];
-      var firstVal = this.storage[firstInLine];
-      delete this.storage[firstInLine];
-      
-      this.index--;
-      console.log('storage',this.storage);
-    }
-    return firstVal;
-  },
-  
-   size: function (){
+  size: function (){
     return this.index;
   }
 };
