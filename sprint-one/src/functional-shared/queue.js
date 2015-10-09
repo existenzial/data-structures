@@ -1,7 +1,8 @@
 var Queue = function(){
   var queueInstance = {
       storage: {},
-      index: 0
+      queuedIndex: 0,
+      lastIndex:0,
   };
 
   _.extend(queueInstance,queueMethods);
@@ -13,24 +14,21 @@ var Queue = function(){
 var queueMethods = {
 
   enqueue: function (value){
-    var firstInLine = Object.keys(this.storage)[0];
-    this.storage[this.index] = value;
-    this.index++;
+    this.storage[this.queuedIndex + this.lastIndex] = value;
+    this.queuedIndex++;
   },
    
   dequeue: function (){
-    if (this.index > 0){
-      console.log('firstinline',Object.keys(this.storage)[0]);
-      var firstInLine = Object.keys(this.storage)[0];
-      var firstVal = this.storage[firstInLine];
-      delete this.storage[firstInLine];
-      this.index--;
-      console.log('storage',this.storage);
+    if (this.queuedIndex > 0){
+      var firstInLine = this.storage[this.lastIndex];
+      delete this.storage[this.lastIndex];
+      this.queuedIndex--;
+      this.lastIndex++;
     }
-    return firstVal;
+    return firstInLine;
   },
   
   size: function (){
-    return this.index;
+    return this.queuedIndex;
   }
 };
