@@ -20,6 +20,7 @@ var Queue = function(){
         queuedIndex--;
         lastIndex++;
     }
+
     return firstInLine;
   };
 

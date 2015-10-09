@@ -19,6 +19,23 @@ var stackMethods = {
     this.index++;
   },
 
+
+   
+   pop: function (){
+    if (this.index > 0){
+      var lastVal = this.storage[this.index - 1];
+      delete this.storage[this.index - 1];
+      this.index--;
+    }
+    return lastVal;
+  },
+  
+   size: function (){
+    return this.index;
+  }
+
+};
+
    
    pop: function (){
     if (this.index > 0){
