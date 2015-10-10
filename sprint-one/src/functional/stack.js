@@ -6,14 +6,14 @@ var Stack = function(){
 
   // Implement the methods below
   someInstance.push = function(value){
-    someInstance[index] = value;
+    storage[index] = value;
     index++;
   };
 
   someInstance.pop = function(){
-    if ( index > 0){
-      var lastVal = someInstance[index-1];
-      delete someInstance[index - 1];
+    if (index > 0){
+      var lastVal = storage[index - 1];
+      delete storage[index - 1];
       index--;
     }
     return lastVal;
