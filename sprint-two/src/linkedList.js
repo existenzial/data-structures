@@ -36,27 +36,23 @@ var LinkedList = function(){
 
   list.contains = function(target){
     //if we wanted to search for the target value 3
-    console.log('Recursing through ', 1);
 
     var currentNode = list.head;
-    console.log('recursion-currentNode.value ',currentNode.value);
-    // console.log('keys',Object.keys(currentNode).length);
-    // console.log('currentNode.value',currentNode.value);
-    if(currentNode.value === target) {
-      return true;
-    } else if (Object.keys(currentNode).length >= 1){
-      list.head = list.head.next; 
-        if(list.tail === currentNode) {
-          if(list.tail.value === target) {
-            return true;
-          } else {
-            return false;
-          }          
-      list.contains(target);
+    while(currentNode !== null){
+    console.log('Recursing through ', 1);
+            
+        if(currentNode.value === target) {
+           return true;
+        } else {
+          currentNode = currentNode.next; 
+        
+        }          
+    }
+    if(currentNode === null) {
+     return false;
+    }
+  }
 
-        }
-    } 
-  };
 
     //if target node or value exists in the list, return it
     //else add the target node to the tail
