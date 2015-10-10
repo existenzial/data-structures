@@ -36,23 +36,28 @@ var LinkedList = function(){
 
   list.contains = function(target){
     //if we wanted to search for the target value 3
-    var currentNodeValue = list.head.value;
-    if(currentNodeValue === target) {
-      return true;
-    } else if (list.head.hasChildren ){
-      list.head = list.head.next;
-      // list.contains(target);
-    // } else if (currentNodeValue === list.tail.value){
-    //   return false;
-    }
+    console.log('Recursing through ', 1);
 
-    else{
-      return false;
-      // 
+    var currentNode = list.head;
+    console.log('recursion-currentNode.value ',currentNode.value);
+    // console.log('keys',Object.keys(currentNode).length);
+    // console.log('currentNode.value',currentNode.value);
+    if(currentNode.value === target) {
+      return true;
+    } else if (Object.keys(currentNode).length >= 1){
+      list.head = list.head.next; 
+        if(list.tail === currentNode) {
+          if(list.tail.value === target) {
+            return true;
+          } else {
+            return false;
+          }          
+      list.contains(target);
+
+        }
     } 
   };
 
-  list.head.hasChildren = (we are not at the end)
     //if target node or value exists in the list, return it
     //else add the target node to the tail
 
@@ -69,15 +74,10 @@ var Node = function(value){
   return node;
 };
 var jvList = new LinkedList();
-jvList.addToTail(1);
-jvList.addToTail(2);
-jvList.addToTail(3);
 jvList.addToTail(4);
 jvList.addToTail(5);
-jvList.removeHead();
-console.log('list',jvList);
-console.log('tail ',jvList.tail);
-console.log('head ',jvList.head);
+jvList.addToTail(6);
+
 
 
 
